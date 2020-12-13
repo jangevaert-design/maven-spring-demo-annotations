@@ -8,7 +8,9 @@ public class AnnotationBeanScopeDemoApp {
     //load spring config file
     ClassPathXmlApplicationContext context =
         new ClassPathXmlApplicationContext("applicationContext.xml");
-    //retrieve bean from spring container (No @Scope annotation means singleton as default)
+    //retrieve bean from spring container (No @Scope annotation in TennisCoach means singleton
+    // as default - if @Scope is set to "prototype", constructor is called twice for every bean
+    // and there are two different locations in memory for two different objects.)
     Coach theCoach = context.getBean("tennisCoach", Coach.class);
 
     Coach alphaCoach = context.getBean("tennisCoach", Coach.class);
